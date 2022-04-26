@@ -1,6 +1,8 @@
 """ORDER MODELS"""
 
 from django.db import models
+from backend.apps.accounts.models import User
+
 
 class Order(models.Model):
     STATUS_NEW = "new"

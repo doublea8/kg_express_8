@@ -2,6 +2,12 @@
 
 from django.db import models
 
+from backend.apps.accounts.models import User
+
+
+class U(User):
+    pass
+
 
 class Category(models.Model):
     """Модель категории продукта"""
