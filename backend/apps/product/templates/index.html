@@ -1,21 +1,27 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Главная страница</h1>
-    <ul>
-        {% if not request.user.is_authenticated %}
-        <li><a href="{% url 'sign_in' %}">Войти</a></li>
-        <li><a href="{% url 'register' %}">Регистрация</a></li>
-        {% else %}
-        <li><a href="{% url 'log_out' %}">Выйти</a></li>
-        {% endif %}
-    </ul>
-</body>
-</html>
+{% extends 'base_tabler.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <div class="col-md-8 mx-auto">
+                    <div id="carousel-controls" class="carousel slide" data-bs-ride="carousel">
+                      <div class="carousel-inner">
+                        {% for banner in banners %}
+                        <div class="carousel-item active">
+                          <img class="d-block w-100" alt="" src="{{banner.image.url}}">
+                        </div>
+                        {% endfor %}
+                      </div>
+                      <a class="carousel-control-prev" href="#carousel-controls" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carousel-controls" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </a>
+                    </div>
+    </div>
+
+{% endblock %}
