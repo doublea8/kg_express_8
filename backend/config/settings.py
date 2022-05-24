@@ -143,5 +143,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+SESSION_COOKIE_AGE = 1209600
 CART_SESSION_ID = 'cart'  # унакальный ключ для хранения корзины

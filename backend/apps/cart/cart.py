@@ -20,11 +20,11 @@ class Cart():
         if update_quantity:
             self.cart[product_id]['quantity'] = quantity
         else:
-            self.cart[product_id]['quantity'] += quantity
+            self.cart[product_id]['quantity' ] += quantity
         self.save()
 
     def remove(self, product):
-        product_id = product.id
+        product_id = str(product.id)
         if product_id in self.cart:
             del self.cart[product_id]
             self.save()
@@ -46,7 +46,7 @@ class Cart():
             yield item
 
     def __len__(self):
-        return (item['quantity'] for item in self.cart.values())
+        return sum(item['quantity'] for item in self.cart.values())
 
 
     def get_total_price(self):
