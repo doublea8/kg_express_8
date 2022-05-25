@@ -50,3 +50,18 @@ class ClearCartView(View):
         cart = Cart(request)
         cart.clear()
         return redirect("cart_detail")
+
+
+from django.http import JsonResponse
+def add_cart_product(request, pk):
+    if request.method == 'POST':
+        try:
+            product = Product.objects.get(id=pk)
+        except Product.DoesNotExist:
+            raise Http404
+        cart = Cart(request)
+        cart.add(
+            product=product
+        )
+        return JsonResponse({'message': 'Ok'}, status=200)
+    return JsonResponse({'message': 'Bad Request'}, status=200)

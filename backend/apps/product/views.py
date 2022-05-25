@@ -56,3 +56,5 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = "product_detail.html"
     context_object_name = "product" # стандартный object
+
+
